@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-orange: #FF6B22;
+    --color-navy: #183B4E;
+    --color-cream: #FFF5EB;
+    --color-charcoal: #101214;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: #FFF5EB;
+    color: #101214;
+    overflow-x: hidden;
+  }
+
+  section {
+    scroll-margin-top: 100px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF5EB;
+}
+::-webkit-scrollbar-thumb {
+  background: #183B4E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6B22;
+}
+
+/* Subtle Film Grain Noise Texture */
+.bg-noise {
+  background-image: radial-gradient(rgba(24, 59, 78, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(24, 59, 78, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(24, 59, 78, 0.05) 1px, transparent 1px);
+}
+
+.bg-dark-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Custom Utilities */
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(24, 59, 78, 0.3);
+  color: transparent;
+}
+
+.text-stroke-light {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+  color: transparent;
+}
+
+.text-stroke-orange {
+  -webkit-text-stroke: 1.5px #FF6B22;
+  color: transparent;
+}
+
+/* Hide scrollbar for clean horizontal scrollers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
