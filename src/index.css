@@ -16,13 +16,31 @@
   }
 
   body {
-    background-color: #FFF5EB;
+    background-color: #FFF7F0;
     color: #101214;
     overflow-x: hidden;
   }
 
   section {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 110px;
+  }
+
+  /* Responsive Heading Typography with clamp() */
+  .heading-hero {
+    font-size: clamp(2.75rem, 6.5vw, 6.25rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+  }
+
+  .heading-section {
+    font-size: clamp(2.25rem, 5vw, 5rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+  }
+
+  .heading-card {
+    font-size: clamp(1.5rem, 3vw, 2.75rem);
+    line-height: 0.95;
   }
 }
 

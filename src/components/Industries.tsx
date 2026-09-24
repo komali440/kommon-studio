@@ -26,46 +26,45 @@ export const Industries: React.FC<IndustriesProps> = ({ onSelectCategory }) => {
   };
 
   return (
-    <section id="industries" className="py-20 sm:py-28 md:py-32 lg:py-36 bg-brand-cream border-b border-brand-navy/10 relative overflow-hidden bg-noise scroll-mt-24 md:scroll-mt-28 lg:scroll-mt-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="industries" className="py-20 sm:py-24 md:py-28 lg:py-32 bg-brand-cream border-b border-brand-navy/15 relative overflow-hidden bg-noise scroll-mt-28 lg:scroll-mt-32">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         
         {/* Section Header */}
         <div className="flex items-center gap-3 mb-4">
           <span className="w-12 h-0.5 bg-brand-orange" />
-          <span className="text-xs font-black uppercase tracking-[0.25em] text-brand-orange">
-            03 — WHO WE WORK WITH
+          <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-brand-orange">
+            06 — WHO WE HELP
           </span>
         </div>
 
-        {/* Big Editorial Headline */}
-        <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-brand-navy uppercase tracking-tight leading-[1.05] max-w-5xl mb-12 sm:mb-16">
-          FROM CAFES TO STARTUPS,
+        {/* Heading */}
+        <h2 className="font-display heading-section text-brand-navy uppercase max-w-5xl mb-10 sm:mb-14">
+          BUILT FOR BUSINESSES
           <br />
-          FROM REAL ESTATE TO PERSONAL BRANDS —
-          <br />
-          <span className="text-brand-orange underline underline-offset-8 decoration-brand-orange/30">
-            WE CREATE FOR DIFFERENT STORIES.
+          <span className="text-brand-orange">
+            THAT WANT TO BE SEEN.
           </span>
         </h2>
 
-        {/* Creative Typography Tag Cloud / Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Sector Cloud + Focus Spotlight */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
-          {/* Left Column: Interactive Industry Pill List */}
-          <div className="lg:col-span-7 flex flex-wrap gap-3">
+          {/* Left Column: Sector Pills */}
+          <div className="lg:col-span-7 flex flex-wrap gap-2.5 sm:gap-3">
             {industriesData.map((item) => {
               const isSelected = activeTab.id === item.id;
               return (
                 <button
                   key={item.id}
+                  type="button"
                   onClick={() => setActiveTab(item)}
-                  className={`flex items-center gap-3 px-5 py-3.5 rounded-2xl transition-all duration-300 border text-sm font-bold uppercase tracking-wider ${
+                  className={`flex items-center gap-3 px-5 py-3.5 rounded-2xl transition-all duration-300 border text-xs sm:text-sm font-mono font-bold uppercase tracking-wider ${
                     isSelected
-                      ? 'bg-brand-navy text-brand-cream border-brand-orange shadow-navy-glow scale-105'
-                      : 'bg-white text-brand-navy border-brand-navy/10 hover:border-brand-orange hover:bg-brand-orange/10'
+                      ? 'bg-brand-navy text-white border-brand-orange shadow-2xl scale-105'
+                      : 'bg-white/80 text-brand-navy border-brand-navy/10 hover:border-brand-orange hover:bg-white'
                   }`}
                 >
-                  <span className={`p-1.5 rounded-lg ${isSelected ? 'text-brand-orange bg-brand-cream/10' : 'text-brand-orange'}`}>
+                  <span className={`p-1.5 rounded-lg ${isSelected ? 'text-brand-orange bg-white/10' : 'text-brand-orange'}`}>
                     {getIcon(item.iconName)}
                   </span>
                   <span>{item.title}</span>
@@ -75,66 +74,52 @@ export const Industries: React.FC<IndustriesProps> = ({ onSelectCategory }) => {
             })}
           </div>
 
-          {/* Right Column: Selected Industry Detail Showcase */}
-          <div className="lg:col-span-5 bg-brand-navy text-brand-cream rounded-3xl p-8 shadow-2xl border border-brand-navy/20 relative overflow-hidden">
-            
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-orange/20 rounded-full blur-2xl" />
+          {/* Right Column: Sector Focus Card */}
+          <div className="lg:col-span-5 bg-brand-navy text-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl border border-brand-navy/20 relative overflow-hidden w-full">
+            <div className="absolute -top-10 -right-10 w-48 h-48 bg-brand-orange/20 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10">
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-brand-orange text-white">
+                  <div className="p-2.5 rounded-xl bg-brand-orange text-white">
                     {getIcon(activeTab.iconName)}
                   </div>
-                  <span className="text-xs font-bold text-brand-orange uppercase tracking-widest">
-                    Target Sector
+                  <span className="text-xs font-mono font-bold text-brand-orange uppercase tracking-widest">
+                    INDUSTRY FOCUS
                   </span>
                 </div>
-
-                <span className="text-xs font-mono text-white/50">
-                  Sector #{industriesData.indexOf(activeTab) + 1}
-                </span>
               </div>
 
-              <h3 className="font-display text-3xl font-black uppercase text-white mb-4">
+              <h3 className="font-display heading-card uppercase text-white mb-3">
                 {activeTab.title}
               </h3>
 
-              <p className="text-base text-brand-cream/80 leading-relaxed mb-6 font-normal">
+              <p className="text-xs sm:text-sm text-brand-cream/85 leading-relaxed mb-6 font-normal">
                 {activeTab.tagline}
               </p>
 
               {/* Tags */}
-              <div className="mb-8">
-                <span className="text-[11px] font-bold text-white/50 uppercase tracking-widest block mb-2">
-                  Specialized Content Formats:
+              <div className="mb-6">
+                <span className="text-[10px] font-mono font-bold text-white/50 uppercase tracking-widest block mb-2">
+                  CONTENT TYPES FOR THIS SECTOR:
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {activeTab.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="px-3 py-1 rounded-full bg-white/10 text-brand-cream text-xs font-semibold">
+                  {activeTab.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 rounded-full bg-white/10 text-brand-cream text-xs font-mono">
                       #{tag}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Sample Project Match */}
-              <div className="p-4 rounded-xl bg-brand-darknavy border border-white/10 flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] text-brand-orange font-extrabold uppercase tracking-wider block">
-                    Relevant Case Study
-                  </span>
-                  <span className="text-sm font-bold text-white">
-                    {activeTab.sampleProject}
-                  </span>
-                </div>
-                <button
-                  onClick={() => onSelectCategory(activeTab.title)}
-                  className="px-4 py-2 rounded-full bg-brand-orange text-white text-xs font-bold uppercase hover:bg-brand-orange-hover transition-colors"
-                >
-                  Discuss
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => onSelectCategory(activeTab.title)}
+                className="w-full py-3.5 sm:py-4 rounded-full bg-brand-orange text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-brand-orange-hover shadow-orange-glow transition-all flex items-center justify-center gap-2"
+              >
+                <span>GET CONTENT FOR {activeTab.title.toUpperCase()}</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
             </div>
 
           </div>

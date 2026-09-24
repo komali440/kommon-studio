@@ -1,77 +1,106 @@
 import React from 'react';
-import { Check } from 'lucide-react';
-import { processSteps } from '../data/companyData';
+import { motion } from 'framer-motion';
 
 export const Process: React.FC = () => {
-  return (
-    <section id="process" className="py-20 sm:py-28 md:py-32 lg:py-36 bg-brand-navy text-white relative overflow-hidden bg-dark-grid border-b border-white/10 scroll-mt-24 md:scroll-mt-28 lg:scroll-mt-32">
-      
-      {/* Background Subtle Accent */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none" />
+  const steps = [
+    {
+      number: '01',
+      title: 'UNDERSTAND',
+      subtitle: 'Business, Audience & Goals',
+      description: 'Understand the business, audience and goals.',
+      deliverable: 'Creative Brief & Content Direction'
+    },
+    {
+      number: '02',
+      title: 'CREATE',
+      subtitle: 'Production & Motion',
+      description: 'Turn ideas into compelling visual content.',
+      deliverable: 'Master Video Cuts & Visual Assets'
+    },
+    {
+      number: '03',
+      title: 'PROMOTE',
+      subtitle: 'Reach & Audience',
+      description: 'Help put the content in front of relevant audiences.',
+      deliverable: 'Multi-Channel Digital Content'
+    },
+    {
+      number: '04',
+      title: 'GROW',
+      subtitle: 'Creative Direction',
+      description: 'Improve the creative direction based on business needs.',
+      deliverable: 'Continuous Iteration'
+    }
+  ];
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  return (
+    <section id="process" className="py-20 sm:py-24 md:py-28 lg:py-32 bg-brand-navy text-white relative overflow-hidden bg-dark-grid border-b border-white/10 scroll-mt-28 lg:scroll-mt-32">
+      {/* Background Accent */}
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 pb-8 border-b border-white/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 pb-8 border-b border-white/10 gap-6">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-12 h-0.5 bg-brand-orange" />
-              <span className="text-xs font-black uppercase tracking-[0.25em] text-brand-orange">
-                06 — OUR WORKFLOW
+              <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-brand-orange">
+                04 — WORKFLOW
               </span>
             </div>
-            <h2 className="font-display text-4xl sm:text-6xl font-black tracking-tight text-white uppercase">
-              HOW WE <span className="text-brand-orange">WORK.</span>
+            <h2 className="font-display heading-section text-white uppercase">
+              FROM PROBLEM <span className="text-brand-orange">TO PROMOTION.</span>
             </h2>
           </div>
 
-          <p className="text-base text-brand-cream/70 max-w-md mt-4 md:mt-0 font-normal">
-            A simple, structured, four-step process that transforms ideas into high-impact digital content and measurable growth.
+          <p className="text-sm sm:text-base text-brand-cream/70 max-w-md font-normal">
+            A simple, transparent process that turns ideas into compelling visual content and digital promotion.
           </p>
         </div>
 
-        {/* 4 Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {processSteps.map((step, idx) => (
-            <div
+        {/* Editorial Process Rows */}
+        <div className="space-y-4 sm:space-y-6">
+          {steps.map((step, idx) => (
+            <motion.div
               key={step.number}
-              className="relative rounded-3xl p-8 bg-brand-darknavy border border-white/10 shadow-2xl hover:border-brand-orange/50 transition-all duration-300 group flex flex-col justify-between"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              className="p-6 sm:p-8 rounded-3xl bg-brand-darknavy/90 border border-white/10 hover:border-brand-orange/50 transition-all duration-300 group flex flex-col md:flex-row md:items-center justify-between gap-6"
             >
-              <div>
-                {/* Number Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <span className="font-display text-4xl font-black text-brand-orange">
-                    {step.number}
-                  </span>
-                  <span className="w-8 h-8 rounded-full bg-white/5 group-hover:bg-brand-orange text-white flex items-center justify-center text-xs transition-colors">
-                    0{idx + 1}
-                  </span>
+              <div className="flex items-start gap-5 sm:gap-7 max-w-3xl">
+                <span className="font-display text-4xl sm:text-5xl font-black text-brand-orange font-mono leading-none flex-shrink-0">
+                  {step.number}
+                </span>
+
+                <div>
+                  <div className="flex items-center gap-3 mb-1 flex-wrap">
+                    <h3 className="font-display heading-card text-white group-hover:text-brand-orange transition-colors uppercase">
+                      {step.title}
+                    </h3>
+                    <span className="text-xs font-mono font-bold text-brand-cream/40 uppercase">
+                      / {step.subtitle}
+                    </span>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-brand-cream/80 leading-relaxed font-normal mt-1.5">
+                    {step.description}
+                  </p>
                 </div>
-
-                <h3 className="font-display text-2xl font-black uppercase text-white mb-2 group-hover:text-brand-orange transition-colors">
-                  {step.title}
-                </h3>
-
-                <span className="text-xs font-bold text-brand-orange uppercase tracking-wider block mb-4">
-                  {step.subtitle}
-                </span>
-
-                <p className="text-xs text-brand-cream/70 leading-relaxed mb-6 font-normal">
-                  {step.description}
-                </p>
               </div>
 
-              {/* Key Output Pill */}
-              <div className="pt-4 border-t border-white/10">
-                <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest block mb-1">
-                  Deliverable Focus:
+              {/* Output Label */}
+              <div className="pt-4 md:pt-0 border-t md:border-t-0 border-white/10 md:text-right flex-shrink-0">
+                <span className="text-[10px] font-mono font-bold text-brand-orange uppercase tracking-widest block mb-1">
+                  STAGE DELIVERABLE
                 </span>
-                <span className="text-xs font-bold text-brand-cream flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-brand-orange" />
-                  <span>{step.keyDeliverable}</span>
+                <span className="text-xs font-mono text-brand-cream/80 font-bold">
+                  {step.deliverable}
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

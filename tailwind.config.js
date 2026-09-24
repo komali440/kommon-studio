@@ -8,11 +8,11 @@ export default {
     extend: {
       colors: {
         brand: {
-          orange: '#FF6B22',
-          'orange-hover': '#E05510',
+          orange: '#FF5500',
+          'orange-hover': '#E04A00',
           navy: '#183B4E',
           darknavy: '#0C2230',
-          cream: '#FFF5EB',
+          cream: '#FFF7F0',
           'cream-dark': '#F5EBE0',
           charcoal: '#101214',
           gray: '#E8E5E0',
@@ -20,8 +20,9 @@ export default {
         }
       },
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
-        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        display: ['"Bebas Neue"', 'Syne', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        mono: ['"Plus Jakarta Sans"', 'monospace'],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',

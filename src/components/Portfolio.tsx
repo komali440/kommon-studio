@@ -4,6 +4,7 @@ import { Play, Eye, ArrowUpRight, Sparkles } from 'lucide-react';
 import { portfolioItems } from '../data/portfolioData';
 import type { PortfolioItem, MediaCategory } from '../types';
 import { scrollToSection } from '../utils/scrollUtils';
+import { FlowingOrangeLines } from './FlowingOrangeLines';
 
 interface PortfolioProps {
   onSelectProject: (item: PortfolioItem) => void;
@@ -25,112 +26,64 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
     ? portfolioItems
     : portfolioItems.filter(item => item.category === activeCategory);
 
-  // Helper to map index to asymmetric editorial grid spans (~60% / 40%, ~40% / 60%, 100%)
-  const getGridSpanClass = (index: number, isFiltered: boolean) => {
-    if (isFiltered) {
-      return index % 3 === 0 ? 'md:col-span-7' : 'md:col-span-5';
-    }
-
-    switch (index) {
-      case 0: // Row 1 Left: ~60% width (7 cols)
-        return 'md:col-span-7';
-      case 1: // Row 1 Right: ~40% width (5 cols)
-        return 'md:col-span-5';
-      case 2: // Row 2 Left: ~40% width (5 cols)
-        return 'md:col-span-5';
-      case 3: // Row 2 Right: ~60% width (7 cols)
-        return 'md:col-span-7';
-      case 4: // Row 3 Left: ~50% width (5 cols)
-        return 'md:col-span-5';
-      case 5: // Row 3 Right / Feature: ~70% width (7 cols) or full-width
-        return 'md:col-span-7';
-      default:
-        return 'md:col-span-6';
-    }
-  };
-
-  // Helper for natural visual aspect ratios
-  const getAspectRatioClass = (index: number, isFiltered: boolean) => {
-    if (isFiltered) {
-      return 'aspect-[16/10]';
-    }
-
-    switch (index) {
-      case 0: // 60% widescreen item
-        return 'aspect-[16/10] sm:aspect-[16/9]';
-      case 1: // 40% taller portrait item
-        return 'aspect-[4/5] sm:aspect-[4/5] md:aspect-[4/5]';
-      case 2: // 40% taller portrait item
-        return 'aspect-[4/5] sm:aspect-[4/5] md:aspect-[4/5]';
-      case 3: // 60% widescreen item
-        return 'aspect-[16/10] sm:aspect-[16/9]';
-      case 4: // 5-col item
-        return 'aspect-[16/10]';
-      case 5: // 7-col item
-        return 'aspect-[16/9]';
-      default:
-        return 'aspect-[16/10]';
-    }
-  };
-
   return (
     <section 
       id="work" 
-      className="py-20 sm:py-28 md:py-32 lg:py-36 bg-brand-cream border-b border-brand-navy/15 relative overflow-hidden scroll-mt-24 md:scroll-mt-28 lg:scroll-mt-32 selection:bg-brand-orange selection:text-white"
+      className="py-20 sm:py-24 md:py-28 lg:py-32 bg-brand-navy text-white relative overflow-hidden bg-dark-grid border-b border-white/10 scroll-mt-28 lg:scroll-mt-32 selection:bg-brand-orange selection:text-white"
     >
-      {/* Subtle Noise / Ambient Grid Texture Background */}
-      <div className="absolute inset-0 bg-noise opacity-40 pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-navy/20 to-transparent" />
+      {/* Background Flowing Orange Line Accent */}
+      <FlowingOrangeLines variant="work" className="-top-10 left-0 w-full h-full pointer-events-none opacity-40" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         
         {/* Editorial Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="mb-12 sm:mb-16"
         >
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-brand-navy/15">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
             <div>
               <div className="flex items-center gap-2.5 mb-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-brand-orange" />
-                <span className="text-xs font-black uppercase tracking-[0.25em] text-brand-orange font-mono">
-                  WORK
+                <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-brand-orange">
+                  03 — PORTFOLIO
                 </span>
               </div>
               
-              <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight uppercase leading-none">
-                <span className="text-brand-navy">SELECTED </span>
+              <h2 className="font-display heading-section uppercase text-white">
+                <span>SELECTED </span>
                 <span className="text-brand-orange">WORK.</span>
               </h2>
             </div>
 
-            <p className="text-base sm:text-lg text-brand-navy/80 max-w-xl font-medium leading-relaxed">
-              Creative content, campaigns and visual experiences built to make brands stand out.
+            <p className="text-base sm:text-lg text-brand-cream/80 max-w-xl font-medium leading-relaxed">
+              Some of the ways we turn ideas, products and businesses into content people want to notice.
             </p>
           </div>
         </motion.div>
 
-        {/* Category Filter Tabs Above Portfolio */}
+        {/* Category Filters */}
         <motion.div 
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-10 sm:mb-14 border-b border-brand-navy/10"
+          transition={{ duration: 0.4 }}
+          className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-10 sm:mb-12 border-b border-white/10"
         >
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
               <button
                 key={cat}
+                type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-300 ${
+                className={`px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-300 ${
                   isActive
                     ? 'bg-brand-orange text-white shadow-orange-glow scale-105'
-                    : 'bg-white/80 text-brand-navy/70 hover:bg-brand-navy hover:text-white border border-brand-navy/15'
+                    : 'bg-white/10 text-brand-cream/70 hover:bg-white hover:text-brand-navy border border-white/10'
                 }`}
               >
                 {cat}
@@ -139,110 +92,108 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
           })}
         </motion.div>
 
-        {/* Asymmetric Editorial Grid (~60%/40%, ~40%/60%) */}
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-stretch"
-        >
+        {/* Large Editorial Project Layout */}
+        <div className="space-y-10 sm:space-y-14">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => {
-              const spanClass = getGridSpanClass(index, activeCategory !== 'ALL');
-              const aspectClass = getAspectRatioClass(index, activeCategory !== 'ALL');
               const isVideo = item.mediaType === 'video' || item.mediaType === 'reel';
+              const isEven = index % 2 === 0;
 
               return (
                 <motion.div
                   key={item.id}
                   layout
                   initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: index * 0.05, ease: 'easeOut' }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
                   onClick={() => onSelectProject(item)}
-                  className={`group relative rounded-3xl overflow-hidden cursor-pointer border border-brand-navy/20 bg-brand-navy shadow-card-subtle hover:shadow-navy-glow transition-all duration-500 hover:-translate-y-1.5 flex flex-col ${spanClass}`}
+                  className={`group relative rounded-3xl overflow-hidden cursor-pointer border border-white/10 bg-brand-darknavy shadow-2xl transition-all duration-500 hover:-translate-y-1.5 grid grid-cols-1 lg:grid-cols-12 items-center gap-0 ${
+                    isEven ? '' : 'lg:flex-row-reverse'
+                  }`}
                 >
-                  {/* Media Visual Container */}
-                  <div className={`relative overflow-hidden w-full ${aspectClass}`}>
-                    
-                    {/* Media Thumbnail */}
+                  {/* Left Column: Media Canvas */}
+                  <div className={`relative overflow-hidden w-full aspect-[16/10] sm:aspect-[16/9] ${
+                    isEven ? 'lg:col-span-7' : 'lg:col-span-7 lg:order-2'
+                  }`}>
                     <img
                       src={item.thumbnail}
                       alt={item.title}
                       loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90"
                     />
 
-                    {/* Editorial Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-darknavy via-brand-navy/45 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300" />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-darknavy via-brand-navy/20 to-transparent" />
                     
-                    {/* Orange Glow Highlight Accent on Hover */}
-                    <div className="absolute inset-0 border-2 border-brand-orange/0 group-hover:border-brand-orange/40 rounded-3xl transition-all duration-300 pointer-events-none z-20" />
+                    {/* Hover Border Accent */}
+                    <div className="absolute inset-0 border-2 border-brand-orange/0 group-hover:border-brand-orange/50 rounded-3xl transition-all duration-300 pointer-events-none z-20" />
 
-                    {/* Top Editorial Badges */}
-                    <div className="absolute top-4 sm:top-5 left-4 sm:left-5 right-4 sm:right-5 flex items-center justify-between z-10">
+                    {/* Top Badges */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
                       <div className="flex items-center gap-2">
-                        {/* Project Index Number Badge */}
-                        <span className="px-3 py-1 rounded-full bg-brand-orange text-white text-[11px] font-black uppercase tracking-widest shadow-md">
+                        <span className="px-3 py-1 rounded-full bg-brand-orange text-white text-[11px] font-mono font-black uppercase tracking-widest shadow-md">
                           {item.projectNumber}
                         </span>
-
-                        {/* Category Tag */}
-                        <span className="px-3.5 py-1 rounded-full bg-brand-cream/90 backdrop-blur-md text-brand-navy text-[10px] font-black uppercase tracking-widest border border-brand-navy/15">
+                        <span className="px-3 py-1 rounded-full bg-black/60 text-brand-cream text-[10px] font-mono font-black uppercase tracking-widest border border-white/15 backdrop-blur-md">
                           {item.category}
                         </span>
                       </div>
 
-                      {/* Right top badges: Duration & Placeholder marker */}
-                      <div className="flex items-center gap-2">
-                        {item.duration && (
-                          <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-brand-orange text-[10px] font-mono font-bold border border-white/10">
-                            {item.duration}
-                          </span>
-                        )}
-
-                        {item.isPlaceholder && (
-                          <span className="hidden sm:inline-block px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md text-brand-cream/70 text-[9px] font-mono uppercase tracking-wider border border-white/10">
-                            CONCEPT SAMPLE
-                          </span>
-                        )}
-                      </div>
+                      {item.duration && (
+                        <span className="px-3 py-1 rounded-full bg-black/60 text-brand-orange text-[10px] font-mono font-bold border border-white/10 backdrop-blur-md">
+                          {item.duration}
+                        </span>
+                      )}
                     </div>
 
-                    {/* Center Action Icon / Play Button */}
-                    <div className="absolute inset-0 m-auto w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-brand-orange text-white flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300 shadow-orange-glow z-20">
+                    {/* Play / View Button Overlay */}
+                    <div className="absolute inset-0 m-auto w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-brand-orange text-white flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300 shadow-orange-glow z-20">
                       {isVideo ? (
                         <Play className="w-7 h-7 sm:w-8 sm:h-8 fill-white translate-x-0.5" />
                       ) : (
                         <Eye className="w-7 h-7 sm:w-8 sm:h-8" />
                       )}
                     </div>
+                  </div>
 
-                    {/* Bottom Project Details Overlay */}
-                    <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-10 text-white">
-                      
-                      {/* Project Title */}
-                      <h3 className="font-display font-black text-xl sm:text-2xl lg:text-3xl text-white group-hover:text-brand-cream transition-colors leading-tight uppercase tracking-tight mb-1.5">
+                  {/* Right Column: Details */}
+                  <div className={`p-6 sm:p-8 lg:p-10 text-white flex flex-col justify-between h-full ${
+                    isEven ? 'lg:col-span-5' : 'lg:col-span-5 lg:order-1'
+                  }`}>
+                    <div>
+                      <div className="flex items-center gap-2 text-xs font-mono font-bold text-brand-orange uppercase tracking-widest mb-2">
+                        <Sparkles className="w-4 h-4" />
+                        <span>PROJECT {item.projectNumber}</span>
+                      </div>
+
+                      <h3 className="font-display heading-card text-white group-hover:text-brand-orange transition-colors uppercase tracking-tight mb-3">
                         {item.title}
                       </h3>
 
-                      {/* Description */}
-                      <p className="text-xs sm:text-sm text-brand-cream/85 line-clamp-2 max-w-xl font-normal leading-relaxed mb-3 group-hover:text-brand-cream transition-colors">
+                      <p className="text-sm text-brand-cream/80 font-normal leading-relaxed mb-6">
                         {item.description}
                       </p>
 
-                      {/* Bottom Footer Row with Deliverable & Action Arrow */}
-                      <div className="flex items-center justify-between pt-3 border-t border-white/20">
-                        <span className="text-[11px] sm:text-xs font-semibold text-brand-cream/75 flex items-center gap-1.5">
-                          <Sparkles className="w-3.5 h-3.5 text-brand-orange" />
-                          <span>{item.deliverable}</span>
-                        </span>
-
-                        <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-extrabold text-brand-orange uppercase tracking-wider group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform">
-                          <span>View Work</span>
-                          <ArrowUpRight className="w-4 h-4" />
-                        </span>
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {item.tags.map((tag) => (
+                          <span key={tag} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono text-brand-cream/70">
+                            #{tag}
+                          </span>
+                        ))}
                       </div>
+                    </div>
 
+                    {/* Action Link */}
+                    <div className="pt-5 border-t border-white/10 flex items-center justify-between">
+                      <span className="text-xs font-mono text-brand-cream/60">
+                        {item.deliverable}
+                      </span>
+
+                      <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-brand-orange uppercase tracking-wider group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform">
+                        <span>VIEW PROJECT</span>
+                        <ArrowUpRight className="w-4 h-4" />
+                      </span>
                     </div>
 
                   </div>
@@ -250,36 +201,22 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
               );
             })}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
-        {/* Section CTA — VIEW ALL WORK ↗ */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-12 sm:mt-16 pt-10 border-t border-brand-navy/15 flex flex-col sm:flex-row items-center justify-between gap-6 bg-white/40 p-6 sm:p-8 rounded-3xl border border-brand-navy/10"
-        >
-          <div>
-            <h4 className="font-display text-lg sm:text-xl font-black text-brand-navy uppercase mb-1">
-              READY TO CREATE STANDOUT MEDIA FOR YOUR BRAND?
-            </h4>
-            <p className="text-xs sm:text-sm text-brand-navy/70 font-medium">
-              Let's produce high-impact promotional videos, social content, and digital campaigns.
-            </p>
-          </div>
-
+        {/* Section Footer Callout */}
+        <div className="mt-14 text-center">
           <button
             type="button"
             onClick={() => scrollToSection('contact')}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-brand-navy text-brand-cream font-bold text-xs uppercase tracking-widest hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-card-hover group whitespace-nowrap"
+            className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-brand-navy font-mono font-bold text-xs uppercase tracking-widest hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-2xl group"
           >
-            <span>VIEW ALL WORK</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform" />
+            <span>HAVE A PROJECT IN MIND? LET'S TALK</span>
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform text-brand-orange group-hover:text-white" />
           </button>
-        </motion.div>
+        </div>
 
       </div>
     </section>
   );
 };
+

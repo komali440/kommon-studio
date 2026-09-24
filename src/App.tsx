@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Marquee } from './components/Marquee';
 import { BrandStatement } from './components/BrandStatement';
+import { About } from './components/About';
+import { Portfolio } from './components/Portfolio';
+import { Process } from './components/Process';
 import { Services } from './components/Services';
 import { Industries } from './components/Industries';
-import { Portfolio } from './components/Portfolio';
-import { ProjectModal } from './components/ProjectModal';
-import { FeaturedVideo } from './components/FeaturedVideo';
-import { About } from './components/About';
-import { Process } from './components/Process';
-import { WhyKommon } from './components/WhyKommon';
+import { CustomerJourney } from './components/CustomerJourney';
 import { CTA } from './components/CTA';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { ProjectModal } from './components/ProjectModal';
 import type { PortfolioItem } from './types';
 import { scrollToSection } from './utils/scrollUtils';
 
@@ -37,59 +35,55 @@ export const App: React.FC = () => {
     thumbnail: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1200&auto=format&fit=crop',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-young-woman-modelling-streetwear-outfits-42861-large.mp4',
     client: 'Kommon Studio',
-    industry: 'Media & Digital Agency',
+    industry: 'Creative Media & Promotion',
     tags: ['Master Showreel', 'Promotional Videos', 'Reels', 'Brand Films'],
     aspectRatio: '16:9',
     duration: '01:15',
-    deliverable: '2026 Reel Compilation',
-    description: 'A compilation showcasing high-retention video editing, promotional commercials, brand films, and social media assets created by Kommon Studio.',
+    deliverable: '2026 Studio Reel',
+    description: 'A compilation showcasing high-retention video editing, promotional commercials, brand films, and creative digital assets created by Kommon Studio.',
   };
 
   return (
     <div className="relative min-h-screen bg-brand-cream text-brand-charcoal font-sans selection:bg-brand-orange selection:text-white">
-      {/* Magnetic Desktop Cursor */}
+      {/* Magnetic Cursor */}
       <CustomCursor />
 
       {/* Navigation Header */}
       <Navbar onOpenContact={() => scrollToContact()} />
 
-      {/* Main Page Sections */}
+      {/* Main Single-Page Sections */}
       <main>
-        {/* Hero Section */}
+        {/* Hero Section (#home) */}
         <Hero
           onOpenShowreel={() => setShowreelOpen(true)}
           onOpenContact={() => scrollToContact()}
         />
 
-        {/* Brand Marquee */}
-        <Marquee />
-
-        {/* Editorial Brand Statement & About Studio (#about) */}
+        {/* Business Problem Section */}
         <BrandStatement />
+
+        {/* About Kommon Studio (#about) */}
         <About />
 
-        {/* 01-06 Services Section (#services) */}
-        <Services onSelectService={(service) => scrollToContact(service)} />
-
-        {/* Selected Work Portfolio (#work) */}
+        {/* Selected Work (#work) */}
         <Portfolio onSelectProject={(item) => setSelectedProject(item)} />
 
-        {/* Who We Work With / Industries (#industries) */}
-        <Industries onSelectCategory={(cat) => scrollToContact(cat)} />
-
-        {/* Featured Video Showreel Section */}
-        <FeaturedVideo onOpenShowreel={() => setShowreelOpen(true)} />
-
-        {/* 01 Understand -> 04 Grow Workflow Process */}
+        {/* How We Solve Business Problems - Process (#process) */}
         <Process />
 
-        {/* Why Kommon Studio Differentiators */}
-        <WhyKommon />
+        {/* Services Section (#services) */}
+        <Services onSelectService={(service) => scrollToContact(service)} />
 
-        {/* Vibrant Orange High-Impact CTA Banner */}
+        {/* Who We Help - Industries (#industries) */}
+        <Industries onSelectCategory={(cat) => scrollToContact(cat)} />
+
+        {/* Customer Journey Section */}
+        <CustomerJourney />
+
+        {/* Final CTA Section */}
         <CTA onOpenContact={() => scrollToContact()} />
 
-        {/* Contact & Inquiry Form (#contact) */}
+        {/* Contact Form (#contact) */}
         <Contact preselectedService={preselectedService} />
       </main>
 
@@ -105,7 +99,7 @@ export const App: React.FC = () => {
         />
       )}
 
-      {/* Showreel Modal */}
+      {/* Showreel Lightbox Modal */}
       {showreelOpen && (
         <ProjectModal
           item={showreelItem}
