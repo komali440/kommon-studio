@@ -127,7 +127,7 @@ export const Contact: React.FC<ContactProps> = ({ preselectedService }) => {
                     <span className="text-[10px] font-mono font-extrabold text-brand-orange uppercase tracking-wider block">
                       INSTAGRAM
                     </span>
-                    <span className="font-display font-black text-lg sm:text-xl text-brand-navy group-hover:text-brand-orange transition-colors leading-none">
+                    <span className="font-mono font-medium text-xs sm:text-sm text-brand-navy group-hover:text-brand-orange transition-colors leading-none lowercase">
                       {companyData.instagramHandle}
                     </span>
                   </div>

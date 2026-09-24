@@ -98,7 +98,7 @@ export const Footer: React.FC = () => {
           <p>© 2026 Kommon Studio. All rights reserved.</p>
 
           <div className="flex items-center gap-6">
-            <span>INSTAGRAM: <strong className="text-brand-orange">{companyData.instagramHandle}</strong></span>
+            <span>INSTAGRAM: <strong className="text-brand-orange lowercase font-mono font-normal tracking-normal">{companyData.instagramHandle}</strong></span>
             
             <button
               type="button"

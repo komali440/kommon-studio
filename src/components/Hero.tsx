@@ -139,7 +139,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenShowreel, onOpenContact }) => 
               transition={{ duration: 0.5, delay: 0.55 }}
               className="mt-8 pt-5 border-t border-white/10 flex flex-wrap items-center gap-4 sm:gap-6 text-[11px] font-mono font-bold text-brand-cream/60 uppercase tracking-widest"
             >
-              <span>INSTAGRAM: <strong className="text-brand-orange">{companyData.instagramHandle}</strong></span>
+              <span>INSTAGRAM: <strong className="text-brand-orange lowercase font-mono font-normal tracking-normal">{companyData.instagramHandle}</strong></span>
               <span className="hidden sm:inline">•</span>
               <span className="hidden sm:inline">CREATIVE MEDIA</span>
               <span className="hidden sm:inline">•</span>

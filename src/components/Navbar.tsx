@@ -74,7 +74,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           </button>
 
           {/* Center Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-brand-navy/5 p-1.5 rounded-full border border-brand-navy/10 backdrop-blur-sm">
+          <nav className={`hidden lg:flex items-center gap-1 p-1.5 rounded-full border backdrop-blur-md transition-all duration-300 ${
+            scrolled
+              ? 'bg-brand-navy/5 border-brand-navy/10'
+              : 'bg-white/10 border-white/20 shadow-lg'
+          }`}>
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -84,8 +88,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   onClick={() => handleNavClick(link.id)}
                   className={`relative px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider transition-all duration-200 ${
                     isActive
-                      ? 'bg-brand-navy text-brand-cream shadow-sm'
-                      : 'text-brand-navy/80 hover:text-brand-orange hover:bg-white/70'
+                      ? scrolled
+                        ? 'bg-brand-navy text-white shadow-sm'
+                        : 'bg-brand-orange text-white shadow-md'
+                      : scrolled
+                        ? 'text-brand-navy/80 hover:text-brand-orange hover:bg-brand-navy/5'
+                        : 'text-white/90 hover:text-white hover:bg-white/15'
                   }`}
                 >
                   {link.name}
@@ -110,7 +118,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl bg-brand-navy/5 text-brand-navy hover:text-brand-orange hover:bg-brand-navy/10 transition-colors"
+            className={`lg:hidden p-2.5 rounded-xl border transition-all ${
+              scrolled
+                ? 'bg-brand-navy/5 text-brand-navy border-brand-navy/10 hover:text-brand-orange'
+                : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
+            }`}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
