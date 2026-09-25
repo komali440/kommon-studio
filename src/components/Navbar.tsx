@@ -15,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
 
-      const sections = ['home', 'work', 'services', 'industries', 'contact'];
+      const sections = ['home', 'work', 'services', 'contact'];
       const current = sections.find((section) => {
         const el = document.getElementById(section);
         if (el) {
@@ -38,7 +38,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     { name: 'HOME', id: 'home' },
     { name: 'WORK', id: 'work' },
     { name: 'SERVICES', id: 'services' },
-    { name: 'INDUSTRIES', id: 'industries' },
     { name: 'CONTACT', id: 'contact' },
   ];
 

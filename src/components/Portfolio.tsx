@@ -19,14 +19,17 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
   return (
     <section 
       id="work" 
-      className="py-16 sm:py-20 md:py-24 lg:py-28 bg-brand-navy text-white relative overflow-hidden bg-dark-grid border-b border-white/10 scroll-mt-24 lg:scroll-mt-28 selection:bg-brand-orange selection:text-white"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 bg-brand-cream text-brand-navy relative overflow-hidden bg-noise border-b border-brand-navy/15 scroll-mt-24 lg:scroll-mt-28 selection:bg-brand-orange selection:text-white"
     >
       {/* Background Flowing Orange Line Accent */}
-      <FlowingOrangeLines variant="work" className="-top-10 left-0 w-full h-full pointer-events-none opacity-40" />
+      <FlowingOrangeLines variant="work" className="-top-10 left-0 w-full h-full pointer-events-none opacity-35" />
+
+      {/* Subtle Soft Orange Gradient Glow in Background Corner */}
+      <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-brand-orange/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 relative z-10">
         
-        {/* Main Section Heading - Global Typography System */}
+        {/* Main Section Heading - Premium Editorial Typography */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,12 +37,12 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
           transition={{ duration: 0.5 }}
           className="mb-10 sm:mb-12 max-w-4xl"
         >
-          <h2 className="font-display heading-section uppercase text-white mb-3">
-            <span>OUR </span>
+          <h2 className="font-display heading-section uppercase mb-3">
+            <span className="text-brand-navy">OUR </span>
             <span className="text-brand-orange">WORK.</span>
           </h2>
 
-          <p className="text-lg sm:text-xl lg:text-2xl text-brand-cream/85 font-sans font-normal leading-relaxed">
+          <p className="text-lg sm:text-xl lg:text-2xl text-brand-navy/80 font-sans font-normal leading-relaxed">
             Some of the ways we turn ideas, products and businesses into content people want to notice.
           </p>
         </motion.div>
@@ -54,7 +57,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: index * 0.1 }}
               onClick={() => onSelectProject(item)}
-              className="group relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border border-white/10 bg-brand-darknavy shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col justify-end"
+              className="group relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border border-brand-navy/15 bg-brand-navy shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-brand-orange/60 flex flex-col justify-end"
             >
               {/* Background Video / Image Element - Filling 100% width and height with object-fit cover */}
               {item.videoUrl ? (
@@ -77,7 +80,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
               )}
 
               {/* Dark Gradient Overlay for legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-darknavy via-brand-darknavy/40 to-black/30 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-darknavy via-brand-navy/40 to-black/30 pointer-events-none" />
 
               {/* Hover Border Accent */}
               <div className="absolute inset-0 border-2 border-brand-orange/0 group-hover:border-brand-orange/60 rounded-2xl sm:rounded-3xl transition-all duration-300 pointer-events-none z-20" />
@@ -89,7 +92,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
                 </span>
 
                 {item.duration && (
-                  <span className="px-3 py-1 rounded-full bg-black/70 text-brand-cream text-[10px] sm:text-xs font-mono font-bold border border-white/15 backdrop-blur-md">
+                  <span className="px-3 py-1 rounded-full bg-black/75 text-brand-cream text-[10px] sm:text-xs font-mono font-bold border border-white/15 backdrop-blur-md">
                     {item.duration}
                   </span>
                 )}
@@ -112,7 +115,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
                 </h3>
 
                 <div className="pt-2.5 sm:pt-3 border-t border-white/15 flex items-center justify-between mt-1.5 text-xs font-mono">
-                  <span className="text-brand-cream/75 font-medium truncate max-w-[65%]">
+                  <span className="text-brand-cream/80 font-medium truncate max-w-[65%]">
                     {item.deliverable}
                   </span>
 
@@ -131,10 +134,10 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
           <button
             type="button"
             onClick={() => scrollToSection('contact')}
-            className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-brand-navy font-mono font-bold text-xs uppercase tracking-widest hover:bg-brand-orange hover:text-white transition-all duration-300 shadow-2xl group"
+            className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-brand-navy text-white font-mono font-bold text-xs uppercase tracking-widest hover:bg-brand-orange hover:scale-105 active:scale-95 transition-all duration-300 shadow-2xl group cursor-pointer"
           >
             <span>HAVE A PROJECT IN MIND? LET'S TALK</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform text-brand-orange group-hover:text-white" />
+            <ArrowUpRight className="w-4 h-4 text-brand-orange group-hover:text-white transition-colors group-hover:translate-x-1 group-hover:-translate-y-0.5" />
           </button>
         </div>
 

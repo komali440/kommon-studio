@@ -1,159 +1,151 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Sparkles, Palette, Video, Film, Share2, TrendingUp } from 'lucide-react';
 import { servicesData } from '../data/servicesData';
-import type { ServiceItem } from '../types';
+import { FlowingOrangeLines } from './FlowingOrangeLines';
 
 interface ServicesProps {
   onSelectService: (serviceName: string) => void;
 }
 
-export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
-  const [activeService, setActiveService] = useState<ServiceItem>(servicesData[0]);
+const getServiceIcon = (iconName: string) => {
+  switch (iconName) {
+    case 'Palette': return <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4" />;
+    case 'Video': return <Video className="w-3.5 h-3.5 sm:w-4 sm:h-4" />;
+    case 'Film': return <Film className="w-3.5 h-3.5 sm:w-4 sm:h-4" />;
+    case 'Share2': return <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />;
+    case 'TrendingUp': return <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />;
+    case 'Sparkles': return <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />;
+    default: return <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />;
+  }
+};
 
+export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
   return (
     <section 
       id="services" 
-      className="py-20 sm:py-24 md:py-28 lg:py-32 bg-brand-cream text-brand-navy relative overflow-hidden bg-noise border-b border-brand-navy/15 scroll-mt-28 lg:scroll-mt-32"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 bg-brand-cream text-brand-navy relative overflow-hidden bg-noise border-b border-brand-navy/15 scroll-mt-24 md:scroll-mt-28 lg:scroll-mt-32"
     >
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
+      {/* Background Soft Glow Accents */}
+      <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-brand-orange/8 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-brand-navy/5 rounded-full blur-3xl pointer-events-none z-0" />
+
+      {/* Vector Line Background Accent */}
+      <FlowingOrangeLines variant="work" className="-top-10 left-0 w-full h-full pointer-events-none opacity-25 z-0" />
+
+      {/* Editorial Watermark Typography */}
+      <div className="absolute left-[-2vw] top-1/2 -translate-y-1/2 select-none pointer-events-none opacity-[0.025] font-display text-[22vw] font-black text-brand-navy leading-none uppercase z-0">
+        SERVICES
+      </div>
+
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         
         {/* Section Header - Clean Vertical Hierarchy (HEADING ↓ SUPPORTING TEXT) */}
-        <div className="max-w-4xl mb-10 sm:mb-14">
-          <h2 className="font-display heading-section uppercase mb-3 sm:mb-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-2xl mx-auto text-center mb-10 sm:mb-14"
+        >
+          <h2 className="font-display heading-section uppercase mb-3 sm:mb-3.5">
             <span className="text-brand-navy">WHAT WE </span>
             <span className="text-brand-orange">DO.</span>
           </h2>
 
-          <p className="text-lg sm:text-xl lg:text-2xl text-brand-navy/80 font-sans font-normal leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-brand-navy/80 font-sans font-normal leading-relaxed max-w-xl mx-auto">
             Services designed to help businesses attract attention, communicate value and reach customers online.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 2-Column Services Display */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          
-          {/* Left Column: All 6 Services as Typography List Items */}
-          <div className="lg:col-span-7 flex flex-col space-y-3">
-            {servicesData.map((service) => {
-              const isSelected = activeService.id === service.id;
+        {/* 6 Horizontal Rectangular Services Cards (Compact Content & Hierarchy) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-stretch w-full mx-auto max-w-[1280px]">
+          {servicesData.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.07 }}
+              onClick={() => onSelectService(service.title)}
+              className="group relative w-full aspect-[1.8/1] min-h-[200px] sm:min-h-[210px] p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-brand-navy text-white border border-brand-navy/15 hover:border-brand-orange/60 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer overflow-hidden"
+            >
+              {/* Subtle Card Ambient Glow on Hover */}
+              <div className="absolute -top-12 -right-12 w-28 h-28 bg-brand-orange/15 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
 
-              return (
-                <motion.div
-                  key={service.id}
-                  onClick={() => setActiveService(service)}
-                  onMouseEnter={() => setActiveService(service)}
-                  className={`group relative cursor-pointer py-5 px-6 rounded-2xl transition-all duration-300 flex items-center justify-between gap-6 border ${
-                    isSelected 
-                      ? 'bg-brand-navy text-white shadow-2xl border-brand-navy scale-[1.01] translate-x-1.5' 
-                      : 'bg-white/80 hover:bg-white border-brand-navy/10 text-brand-navy hover:translate-x-1.5'
-                  }`}
-                >
-                  <div className="flex items-center gap-5 sm:gap-7">
-                    {/* Number */}
-                    <span className={`font-display font-black text-2xl sm:text-4xl font-mono transition-colors duration-300 leading-none ${
-                      isSelected ? 'text-brand-orange' : 'text-brand-navy/30 group-hover:text-brand-orange'
-                    }`}>
-                      {service.number}
-                    </span>
-
-                    <div>
-                      {/* Service Title */}
-                      <h3 className={`font-display heading-card uppercase tracking-tight transition-colors duration-300 ${
-                        isSelected ? 'text-white' : 'text-brand-navy group-hover:text-brand-orange'
-                      }`}>
-                        {service.title}
-                      </h3>
-
-                      {/* Business Value Explanation */}
-                      <p className={`text-xs sm:text-sm font-normal mt-1.5 leading-relaxed max-w-lg transition-colors ${
-                        isSelected ? 'text-brand-cream/80' : 'text-brand-navy/70'
-                      }`}>
-                        {service.description}
-                      </p>
+              <div className="flex flex-col h-full justify-between z-10">
+                
+                {/* Top Designed Header Area */}
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    {/* Left: Service Icon Badge */}
+                    <div className="w-6.5 h-6.5 sm:w-7.5 sm:h-7.5 rounded-lg bg-brand-orange/15 border border-brand-orange/30 text-brand-orange flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white group-hover:scale-105 transition-all duration-300 shadow-sm shrink-0">
+                      {getServiceIcon(service.icon)}
                     </div>
+
+                    {/* Right: Tagline Badge */}
+                    <span className="px-2 py-0.5 rounded-full bg-white/10 text-brand-cream text-[8.5px] sm:text-[9.5px] font-mono font-bold uppercase tracking-wider border border-white/10 truncate max-w-[160px]">
+                      {service.tagline}
+                    </span>
                   </div>
 
-                  {/* Arrow Action Trigger */}
+                  {/* Thin Subtle Accent Divider Line */}
+                  <div className="w-full h-[1px] bg-gradient-to-r from-brand-orange/40 via-white/15 to-transparent mb-1.5 group-hover:from-brand-orange transition-colors duration-300" />
+
+                  {/* Number + Service Title on the SAME Horizontal Line (01  SERVICE HEADING) */}
+                  <h3 className="font-display text-base sm:text-lg font-black uppercase tracking-tight text-white group-hover:text-brand-orange transition-colors mb-1.5 leading-snug flex items-center gap-2 sm:gap-2.5">
+                    <span className="font-mono text-xs font-bold text-brand-orange/90 shrink-0">
+                      {service.number}
+                    </span>
+                    <span className="truncate">
+                      {service.title}
+                    </span>
+                  </h3>
+
+                  {/* Supporting Description (Compact ~60-70% of heading size) */}
+                  <p className="text-[11px] sm:text-xs text-brand-cream/75 font-sans font-normal leading-relaxed line-clamp-2 mb-2">
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Key Deliverables Pills */}
+                {service.deliverables && service.deliverables.length > 0 && (
+                  <div className="flex flex-wrap gap-1 mb-1.5">
+                    {service.deliverables.slice(0, 2).map((item, idx) => (
+                      <span key={idx} className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[8.5px] sm:text-[9.5px] font-mono text-brand-cream/75 truncate max-w-[140px]">
+                        #{item}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Bottom Action Footer */}
+                <div className="pt-2 border-t border-white/10 flex items-center justify-between mt-auto">
+                  <div className="flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] font-mono font-bold text-brand-orange uppercase tracking-wider">
+                    <Sparkles className="w-3 h-3" />
+                    <span>CORE SERVICE</span>
+                  </div>
+
                   <button
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       onSelectService(service.title);
                     }}
-                    className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                      isSelected
-                        ? 'bg-brand-orange text-white scale-105 shadow-orange-glow'
-                        : 'bg-brand-navy/5 text-brand-navy/60 group-hover:bg-brand-orange group-hover:text-white group-hover:scale-105'
-                    }`}
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/10 group-hover:bg-brand-orange text-white text-[9.5px] sm:text-[10.5px] font-mono font-bold uppercase tracking-wider group-hover:scale-105 transition-all duration-300"
                     aria-label={`Select ${service.title}`}
                   >
-                    <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span>DISCUSS</span>
+                    <ArrowUpRight className="w-3 h-3 text-brand-orange group-hover:text-white transition-colors" />
                   </button>
-
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Right Column: Featured Visual Preview Box */}
-          <div className="lg:col-span-5 sticky top-28">
-            <div className="relative rounded-3xl overflow-hidden bg-brand-navy text-white shadow-2xl border border-brand-navy/20 min-h-[440px] sm:min-h-[480px] flex flex-col justify-between group">
-              
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeService.id}
-                  src={activeService.previewImage}
-                  alt={activeService.title}
-                  initial={{ opacity: 0.4, scale: 1.05 }}
-                  animate={{ opacity: 0.85, scale: 1 }}
-                  exit={{ opacity: 0.4, scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </AnimatePresence>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-darknavy via-brand-navy/60 to-brand-darknavy/30 z-0" />
-
-              <div className="relative z-10 p-6 sm:p-8 flex items-center justify-between">
-                <span className="px-3.5 py-1.5 rounded-full bg-brand-orange text-white text-[10px] font-mono font-black uppercase tracking-widest shadow-md">
-                  FEATURED SERVICE
-                </span>
-                <span className="px-3 py-1.5 rounded-full bg-black/60 text-brand-cream font-mono font-bold text-xs">
-                  {activeService.number} / 06
-                </span>
-              </div>
-
-              <div className="relative z-10 p-6 sm:p-8">
-                <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-brand-orange uppercase tracking-widest mb-2">
-                  <Sparkles className="w-4 h-4" />
-                  <span>{activeService.title}</span>
                 </div>
-
-                <h4 className="font-display heading-card uppercase text-white mb-3 leading-none">
-                  {activeService.featuredHeadline}
-                </h4>
-
-                <p className="text-xs sm:text-sm text-brand-cream/85 font-normal leading-relaxed mb-6">
-                  {activeService.description}
-                </p>
-
-                <button
-                  type="button"
-                  onClick={() => onSelectService(activeService.title)}
-                  className="px-6 py-3.5 rounded-full bg-brand-orange text-white text-xs font-mono font-bold uppercase tracking-wider shadow-orange-glow hover:bg-brand-orange-hover hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2"
-                >
-                  <span>DISCUSS {activeService.title}</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
               </div>
-
-            </div>
-          </div>
-
+            </motion.div>
+          ))}
         </div>
 
       </div>
     </section>
   );
 };
+

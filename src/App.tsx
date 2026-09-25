@@ -6,9 +6,7 @@ import { BrandStatement } from './components/BrandStatement';
 import { Portfolio } from './components/Portfolio';
 import { Process } from './components/Process';
 import { Services } from './components/Services';
-import { Industries } from './components/Industries';
 import { CustomerJourney } from './components/CustomerJourney';
-import { CTA } from './components/CTA';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ProjectModal } from './components/ProjectModal';
@@ -70,16 +68,10 @@ export const App: React.FC = () => {
         {/* Services Section (#services) */}
         <Services onSelectService={(service) => scrollToContact(service)} />
 
-        {/* Who We Help - Industries (#industries) */}
-        <Industries onSelectCategory={(cat) => scrollToContact(cat)} />
-
         {/* Customer Journey Section */}
         <CustomerJourney />
 
-        {/* Final CTA Section */}
-        <CTA onOpenContact={() => scrollToContact()} />
-
-        {/* Contact Form (#contact) */}
+        {/* Contact Form / Let's Start a Project Together (#contact) */}
         <Contact preselectedService={preselectedService} />
       </main>
 
