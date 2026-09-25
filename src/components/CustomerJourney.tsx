@@ -20,15 +20,11 @@ export const CustomerJourney: React.FC = () => {
 
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-orange text-xs font-mono font-bold uppercase tracking-widest mb-4">
-            <span>07 — AUDIENCE JOURNEY</span>
-          </div>
-
           <h2 className="font-display heading-section text-white uppercase mb-4">
             HOW PEOPLE BECOME <span className="text-brand-orange">YOUR CUSTOMERS.</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-brand-cream/80 leading-relaxed font-normal">
+          <p className="text-lg sm:text-xl lg:text-2xl text-brand-cream/80 font-sans font-normal leading-relaxed">
             {companyData.customerJourneySub}
           </p>
         </div>

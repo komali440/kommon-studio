@@ -18,23 +18,14 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
     >
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         
-        {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-8 mb-10 sm:mb-14 border-b border-brand-navy/15 gap-6">
-          <div>
-            <div className="flex items-center gap-2.5 mb-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-brand-orange" />
-              <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-brand-orange">
-                05 — SERVICES
-              </span>
-            </div>
+        {/* Section Header - Clean Vertical Hierarchy (HEADING ↓ SUPPORTING TEXT) */}
+        <div className="max-w-4xl mb-10 sm:mb-14">
+          <h2 className="font-display heading-section uppercase mb-3 sm:mb-4">
+            <span className="text-brand-navy">WHAT WE </span>
+            <span className="text-brand-orange">DO.</span>
+          </h2>
 
-            <h2 className="font-display heading-section uppercase">
-              <span className="text-brand-navy">WHAT WE </span>
-              <span className="text-brand-orange">DO.</span>
-            </h2>
-          </div>
-
-          <p className="text-base sm:text-lg text-brand-navy/80 font-medium max-w-md leading-relaxed">
+          <p className="text-lg sm:text-xl lg:text-2xl text-brand-navy/80 font-sans font-normal leading-relaxed">
             Services designed to help businesses attract attention, communicate value and reach customers online.
           </p>
         </div>

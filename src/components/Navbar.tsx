@@ -15,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
 
-      const sections = ['home', 'about', 'work', 'services', 'industries', 'contact'];
+      const sections = ['home', 'work', 'services', 'industries', 'contact'];
       const current = sections.find((section) => {
         const el = document.getElementById(section);
         if (el) {
@@ -36,7 +36,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
 
   const navLinks = [
     { name: 'HOME', id: 'home' },
-    { name: 'ABOUT', id: 'about' },
     { name: 'WORK', id: 'work' },
     { name: 'SERVICES', id: 'services' },
     { name: 'INDUSTRIES', id: 'industries' },
@@ -49,36 +48,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'py-3 sm:py-3.5 bg-brand-cream/95 backdrop-blur-md border-b border-brand-navy/12 shadow-card-subtle'
-          : 'py-5 bg-transparent'
-      }`}
-    >
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12">
-        <div className="flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 py-3 sm:py-4 px-4 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
+      <div className="max-w-[1280px] mx-auto pointer-events-auto">
+        <div className={`flex items-center justify-between px-5 sm:px-6 py-2.5 sm:py-3 rounded-2xl sm:rounded-full border backdrop-blur-xl transition-all duration-300 ${
+          scrolled
+            ? 'bg-[#0C2230]/95 border-white/20 shadow-[0_12px_35px_rgba(0,0,0,0.4)] text-white'
+            : 'bg-[#0C2230]/80 border-white/20 shadow-xl text-white'
+        }`}>
           
           {/* Left: Official Kommon Studio Logo Image Signature */}
           <button
             type="button"
             onClick={() => handleNavClick('home')}
-            className="flex items-center group text-left focus:outline-none relative py-1"
+            className="flex items-center group text-left focus:outline-none relative py-0.5"
             aria-label="Kommon Studio Home"
           >
             <img
               src="/kommon-logo.png"
               alt="Kommon Studio"
-              className="h-10 sm:h-12 lg:h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_4px_12px_rgba(255,107,34,0.25)]"
+              className="h-8 sm:h-9 lg:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-105"
             />
           </button>
 
           {/* Center Navigation Links */}
-          <nav className={`hidden lg:flex items-center gap-1 p-1.5 rounded-full border backdrop-blur-md transition-all duration-300 ${
-            scrolled
-              ? 'bg-brand-navy/5 border-brand-navy/10'
-              : 'bg-white/10 border-white/20 shadow-lg'
-          }`}>
+          <nav className="hidden lg:flex items-center gap-1 sm:gap-1.5">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -88,12 +81,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   onClick={() => handleNavClick(link.id)}
                   className={`relative px-4 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider transition-all duration-200 ${
                     isActive
-                      ? scrolled
-                        ? 'bg-brand-navy text-white shadow-sm'
-                        : 'bg-brand-orange text-white shadow-md'
-                      : scrolled
-                        ? 'text-brand-navy/80 hover:text-brand-orange hover:bg-brand-navy/5'
-                        : 'text-white/90 hover:text-white hover:bg-white/15'
+                      ? 'bg-brand-orange text-white shadow-md'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {link.name}
@@ -107,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             <button
               type="button"
               onClick={onOpenContact}
-              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-brand-orange text-white text-xs font-mono font-bold uppercase tracking-wider shadow-orange-glow hover:bg-brand-orange-hover hover:scale-[1.04] hover:-translate-y-0.5 active:scale-95 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-brand-orange text-white text-xs font-mono font-bold uppercase tracking-wider shadow-orange-glow hover:bg-brand-orange-hover hover:scale-[1.04] active:scale-95 transition-all duration-300"
             >
               <span>LET'S TALK</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -118,44 +107,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2.5 rounded-xl border transition-all ${
-              scrolled
-                ? 'bg-brand-navy/5 text-brand-navy border-brand-navy/10 hover:text-brand-orange'
-                : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
-            }`}
+            className="lg:hidden p-2 rounded-xl text-white border border-white/15 hover:bg-white/10 transition-all"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       <div
-        className={`lg:hidden fixed inset-x-0 top-[65px] bg-brand-cream/98 backdrop-blur-xl border-b border-brand-navy/10 shadow-2xl transition-all duration-300 ease-in-out origin-top overflow-hidden ${
-          mobileMenuOpen ? 'max-h-[500px] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'
+        className={`lg:hidden pointer-events-auto max-w-[1280px] mx-auto mt-2 bg-[#0C2230]/98 backdrop-blur-xl border border-white/15 rounded-2xl shadow-2xl transition-all duration-300 ease-in-out origin-top overflow-hidden ${
+          mobileMenuOpen ? 'max-h-[400px] opacity-100 p-5' : 'max-h-0 opacity-0 p-0 border-none'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex flex-col gap-2">
+        <div className="flex flex-col gap-1.5">
           {navLinks.map((link) => (
             <button
               key={link.name}
               type="button"
               onClick={() => handleNavClick(link.id)}
-              className="flex items-center justify-between py-3 px-4 rounded-xl text-sm font-mono font-bold uppercase tracking-wider text-brand-navy hover:text-brand-orange hover:bg-brand-navy/5 transition-all text-left w-full"
+              className="flex items-center justify-between py-2.5 px-4 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-white hover:text-brand-orange hover:bg-white/10 transition-all text-left w-full"
             >
               <span>{link.name}</span>
               <ArrowUpRight className="w-4 h-4 text-brand-orange" />
             </button>
           ))}
-          <div className="pt-4 border-t border-brand-navy/10 mt-2">
+          <div className="pt-3 border-t border-white/15 mt-1">
             <button
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenContact();
               }}
-              className="w-full py-3.5 rounded-xl bg-brand-orange text-white text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-orange-glow hover:bg-brand-orange-hover"
+              className="w-full py-3 rounded-xl bg-brand-orange text-white text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-orange-glow hover:bg-brand-orange-hover"
             >
               <span>LET'S TALK</span>
               <ArrowUpRight className="w-4 h-4" />

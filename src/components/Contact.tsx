@@ -56,33 +56,16 @@ export const Contact: React.FC<ContactProps> = ({ preselectedService }) => {
     >
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         
-        {/* Section Label */}
-        <div className="flex items-center gap-3 mb-6 sm:mb-8">
-          <span className="w-10 sm:w-12 h-0.5 bg-brand-orange" />
-          <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-brand-orange">
-            08 — GET IN TOUCH
-          </span>
-        </div>
-
         {/* Responsive 2-Column Grid (45% / 55% Desktop Ratio) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-start">
           
           {/* Left Column: Headline & Direct Contact CTAs */}
           <div className="lg:col-span-5 min-w-0 w-full max-w-[540px]">
-            <h2 
-              className="font-display font-black text-brand-navy uppercase tracking-tight leading-[0.9] mb-5 max-w-[540px]"
-              style={{ 
-                fontSize: 'clamp(2.5rem, 4.5vw, 4.8rem)',
-                overflowWrap: 'normal',
-                wordBreak: 'normal' 
-              }}
-            >
-              LET'S START<br />
-              A PROJECT<br />
-              <span className="text-brand-orange">TOGETHER.</span>
+            <h2 className="font-display heading-section text-brand-navy uppercase mb-5 max-w-[540px]">
+              LET'S START A PROJECT <span className="text-brand-orange">TOGETHER.</span>
             </h2>
 
-            <p className="text-sm sm:text-base text-brand-navy/80 leading-relaxed mb-6 font-normal max-w-[500px]">
+            <p className="text-lg sm:text-xl text-brand-navy/80 font-sans font-normal leading-relaxed mb-6 max-w-[500px]">
               Tell us what business problem you are trying to solve — visibility, content, promotion or reaching customers. Let's find a creative way forward.
             </p>
 

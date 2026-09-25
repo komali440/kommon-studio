@@ -68,8 +68,7 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-3 text-xs font-mono font-semibold uppercase tracking-wider text-brand-cream/80">
               <li><button type="button" onClick={() => scrollToSection('home')} className="hover:text-brand-orange transition-colors text-left">HOME</button></li>
-              <li><button type="button" onClick={() => scrollToSection('about')} className="hover:text-brand-orange transition-colors text-left">ABOUT STUDIO</button></li>
-              <li><button type="button" onClick={() => scrollToSection('work')} className="hover:text-brand-orange transition-colors text-left">SELECTED WORK</button></li>
+              <li><button type="button" onClick={() => scrollToSection('work')} className="hover:text-brand-orange transition-colors text-left">OUR WORK</button></li>
               <li><button type="button" onClick={() => scrollToSection('services')} className="hover:text-brand-orange transition-colors text-left">SERVICES</button></li>
               <li><button type="button" onClick={() => scrollToSection('industries')} className="hover:text-brand-orange transition-colors text-left">INDUSTRIES</button></li>
               <li><button type="button" onClick={() => scrollToSection('contact')} className="hover:text-brand-orange transition-colors text-left">CONTACT</button></li>

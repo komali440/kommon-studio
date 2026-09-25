@@ -40,21 +40,13 @@ export const Process: React.FC = () => {
 
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 pb-8 border-b border-white/10 gap-6">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-12 h-0.5 bg-brand-orange" />
-              <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-brand-orange">
-                04 — WORKFLOW
-              </span>
-            </div>
-            <h2 className="font-display heading-section text-white uppercase">
-              FROM PROBLEM <span className="text-brand-orange">TO PROMOTION.</span>
-            </h2>
-          </div>
+        {/* Section Header - Clean Vertical Hierarchy (HEADING ↓ SUPPORTING TEXT) */}
+        <div className="max-w-4xl mb-10 sm:mb-12">
+          <h2 className="font-display heading-section text-white uppercase mb-3 sm:mb-4">
+            FROM PROBLEM <span className="text-brand-orange">TO PROMOTION.</span>
+          </h2>
 
-          <p className="text-sm sm:text-base text-brand-cream/70 max-w-md font-normal">
+          <p className="text-lg sm:text-xl lg:text-2xl text-brand-cream/80 font-sans font-normal leading-relaxed">
             A simple, transparent process that turns ideas into compelling visual content and digital promotion.
           </p>
         </div>

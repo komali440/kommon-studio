@@ -15,30 +15,24 @@ export const BrandStatement: React.FC = () => {
 
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
         
-        {/* Section Label */}
-        <div className="flex items-center gap-3 mb-6">
-          <span className="w-12 h-0.5 bg-brand-orange" />
-          <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-brand-orange">
-            01 — BUSINESS PROBLEM
-          </span>
+        {/* Main Section Heading - Global Typography System */}
+        <div className="max-w-4xl mb-8 sm:mb-10">
+          <h2 className="font-display heading-section text-white uppercase mb-4">
+            YOUR BUSINESS HAS A STORY.
+            <br />
+            <span className="text-brand-orange">
+              LET'S MAKE PEOPLE NOTICE IT.
+            </span>
+          </h2>
+
+          {/* Supporting Copy - Unified Typography (~50% of heading size) */}
+          <p className="text-lg sm:text-xl lg:text-2xl text-brand-cream/90 font-sans font-normal leading-relaxed">
+            {companyData.businessProblemSub}
+          </p>
         </div>
 
-        {/* Big Editorial Headline */}
-        <h2 className="font-display heading-section text-white uppercase max-w-4xl mb-6">
-          YOUR BUSINESS HAS A STORY.
-          <br />
-          <span className="text-brand-orange">
-            LET'S MAKE PEOPLE NOTICE IT.
-          </span>
-        </h2>
-
-        {/* Supporting Copy */}
-        <p className="text-base sm:text-xl text-brand-cream/90 max-w-3xl font-medium leading-relaxed mb-12 sm:mb-16">
-          {companyData.businessProblemSub}
-        </p>
-
-        {/* 4 Problem Blocks in 2x2 Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 pt-8 border-t border-white/10">
+        {/* 4 Problem Blocks in Balanced Grid Flow */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 pt-6 sm:pt-8 border-t border-white/10">
           {businessProblems.map((prob, idx) => (
             <motion.div
               key={prob.number}
@@ -46,9 +40,9 @@ export const BrandStatement: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="flex items-start gap-5 sm:gap-6 group p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-orange/60 hover:bg-white/10 transition-all duration-300 shadow-xl"
+              className="flex items-start gap-4 sm:gap-5 group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-orange/60 hover:bg-white/10 transition-all duration-300 shadow-xl"
             >
-              <span className="font-display font-black text-3xl sm:text-4xl text-brand-orange font-mono leading-none">
+              <span className="font-display font-black text-3xl sm:text-4xl text-brand-orange font-mono leading-none shrink-0">
                 {prob.number}
               </span>
 
@@ -56,7 +50,7 @@ export const BrandStatement: React.FC = () => {
                 <h3 className="font-display heading-card text-white uppercase mb-2 group-hover:text-brand-orange transition-colors">
                   {prob.question}
                 </h3>
-                <p className="text-sm sm:text-base text-brand-cream/80 font-normal leading-relaxed">
+                <p className="text-sm sm:text-base text-brand-cream/80 font-sans font-normal leading-relaxed">
                   {prob.solution}
                 </p>
               </div>

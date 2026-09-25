@@ -3,7 +3,6 @@ import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { BrandStatement } from './components/BrandStatement';
-import { About } from './components/About';
 import { Portfolio } from './components/Portfolio';
 import { Process } from './components/Process';
 import { Services } from './components/Services';
@@ -23,7 +22,7 @@ export const App: React.FC = () => {
 
   const scrollToContact = (serviceName?: string) => {
     if (serviceName) setPreselectedService(serviceName);
-    scrollToSection('contact');
+    scrollToSection('contact', true);
   };
 
   const showreelItem: PortfolioItem = {
@@ -44,7 +43,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-brand-cream text-brand-charcoal font-sans selection:bg-brand-orange selection:text-white">
+    <div className="relative min-h-screen bg-[#0C2230] text-brand-charcoal font-sans selection:bg-brand-orange selection:text-white">
       {/* Magnetic Cursor */}
       <CustomCursor />
 
@@ -62,10 +61,7 @@ export const App: React.FC = () => {
         {/* Business Problem Section */}
         <BrandStatement />
 
-        {/* About Kommon Studio (#about) */}
-        <About />
-
-        {/* Selected Work (#work) */}
+        {/* Selected Work / OUR WORK (#work) */}
         <Portfolio onSelectProject={(item) => setSelectedProject(item)} />
 
         {/* How We Solve Business Problems - Process (#process) */}

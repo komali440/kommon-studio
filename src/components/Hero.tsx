@@ -17,46 +17,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenShowreel, onOpenContact }) => 
       id="home" 
       className="relative min-h-[90vh] lg:min-h-screen pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 flex flex-col justify-center overflow-hidden bg-[#0C2230] text-white bg-noise scroll-mt-28 lg:scroll-mt-32"
     >
-      {/* 1. Oversized Watermark Typography (Exact match to reference image background) */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 select-none pointer-events-none opacity-[0.07] font-display text-[22vw] font-black text-black leading-none whitespace-nowrap z-0">
+      {/* 1. Oversized Watermark Typography - Positioned Exactly in the Middle */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none opacity-[0.06] font-display text-[22vw] font-black text-white leading-none whitespace-nowrap z-0">
         KOMMON
       </div>
 
-      {/* 2. Top-Left Luminous Orange 3D Sphere / Orb (As seen in reference screenshot) */}
-      <div className="absolute -top-12 -left-16 w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-gradient-to-br from-[#FF7A33] via-[#FF5500] to-transparent shadow-[0_0_90px_rgba(255,85,0,0.55)] opacity-90 pointer-events-none z-0" />
-
-      {/* 3. Bottom-Right Glowing Atmospheric Field */}
-      <div className="absolute -bottom-24 -right-24 w-[550px] h-[550px] sm:w-[700px] sm:h-[700px] rounded-full bg-gradient-to-tl from-[#FF5500]/30 via-[#FF6B22]/15 to-transparent blur-3xl pointer-events-none z-0" />
-
-      {/* 4. Elegant Thin Orange Arc Ring around Showreel Area (As seen in reference screenshot) */}
-      <svg 
-        className="absolute right-0 top-10 w-full lg:w-1/2 h-full pointer-events-none z-0 opacity-80"
-        viewBox="0 0 600 600"
-        fill="none"
-      >
-        <path 
-          d="M 150,80 A 260,260 0 0,1 550,420" 
-          stroke="#FF5500" 
-          strokeWidth="1.5" 
-          strokeDasharray="1 0"
-          className="opacity-70"
-        />
-        <path 
-          d="M 80,180 A 320,320 0 0,1 580,520" 
-          stroke="#FF5500" 
-          strokeWidth="1" 
-          className="opacity-30"
-        />
-      </svg>
-
-      {/* 5. Subtle Dot Grid Matrix (Top-Right & Bottom-Left) */}
-      <div className="absolute top-16 right-12 w-56 h-56 bg-[radial-gradient(#FF6B22_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-35 pointer-events-none z-0" />
-      <div className="absolute bottom-12 left-10 w-56 h-56 bg-[radial-gradient(#FF6B22_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-20 pointer-events-none z-0" />
-
-      {/* 6. Floating Accent Light Dots (Matching reference screenshot placement) */}
-      <div className="absolute top-1/2 left-10 w-3 h-3 rounded-full bg-brand-orange shadow-[0_0_15px_#FF5500] pointer-events-none z-0" />
-      <div className="absolute bottom-28 left-1/3 w-3.5 h-3.5 rounded-full bg-brand-orange shadow-[0_0_18px_#FF5500] pointer-events-none z-0" />
-      <div className="absolute top-1/3 right-12 w-2.5 h-2.5 rounded-full bg-brand-orange shadow-[0_0_12px_#FF5500] pointer-events-none z-0" />
+      {/* Subtle Dot Grid Matrix Background */}
+      <div className="absolute top-16 right-12 w-56 h-56 bg-[radial-gradient(#FF6B22_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-25 pointer-events-none z-0" />
+      <div className="absolute bottom-12 left-10 w-56 h-56 bg-[radial-gradient(#FF6B22_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-15 pointer-events-none z-0" />
 
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 w-full z-10 my-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -101,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenShowreel, onOpenContact }) => 
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.35 }}
-              className="text-base sm:text-lg text-brand-cream/85 font-normal leading-relaxed max-w-xl mb-8"
+              className="text-lg sm:text-xl lg:text-2xl text-brand-cream/85 font-sans font-normal leading-relaxed max-w-xl mb-8"
             >
               We help businesses attract customers, promote their products and grow their brand through creative content and digital promotion.
             </motion.p>

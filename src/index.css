@@ -12,34 +12,49 @@
 
   html {
     scroll-behavior: smooth;
+    background-color: #0C2230;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   body {
-    background-color: #FFF7F0;
+    background-color: #0C2230;
     color: #101214;
     overflow-x: hidden;
   }
 
-  section {
-    scroll-margin-top: 110px;
+  #root {
+    background-color: #0C2230;
   }
 
-  /* Responsive Heading Typography with clamp() */
+  section {
+    scroll-margin-top: 100px;
+  }
+
+  /* Responsive Heading Typography with clamp() - Global Unified Hierarchy */
   .heading-hero {
-    font-size: clamp(2.75rem, 6.5vw, 6.25rem);
+    font-family: 'Bebas Neue', 'Syne', sans-serif;
+    font-size: clamp(2.75rem, 6.5vw, 5.5rem);
     line-height: 0.92;
     letter-spacing: -0.01em;
   }
 
   .heading-section {
-    font-size: clamp(2.25rem, 5vw, 5rem);
-    line-height: 0.92;
+    font-family: 'Bebas Neue', 'Syne', sans-serif;
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    line-height: 0.95;
     letter-spacing: -0.01em;
   }
 
+  .subtext-section {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(1.125rem, 2.5vw, 2.25rem); /* ~50% of main heading size */
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
   .heading-card {
-    font-size: clamp(1.5rem, 3vw, 2.75rem);
+    font-family: 'Bebas Neue', 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     line-height: 0.95;
   }
 }
