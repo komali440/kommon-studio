@@ -48,15 +48,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 py-3 sm:py-4 px-4 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 py-3 sm:py-4 px-3 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
       <div className="max-w-[1280px] mx-auto pointer-events-auto">
-        <div className={`flex items-center justify-between px-5 sm:px-6 py-2.5 sm:py-3 rounded-2xl sm:rounded-full border backdrop-blur-xl transition-all duration-300 ${
+        <div className={`flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl sm:rounded-full border backdrop-blur-xl transition-all duration-300 ${
           scrolled
-            ? 'bg-[#0C2230]/95 border-white/20 shadow-[0_12px_35px_rgba(0,0,0,0.4)] text-white'
-            : 'bg-[#0C2230]/80 border-white/20 shadow-xl text-white'
+            ? 'bg-[#0C2230]/95 border-brand-orange/30 shadow-[0_12px_35px_rgba(0,0,0,0.4)] text-white'
+            : 'bg-[#0C2230]/90 border-white/20 shadow-xl text-white'
         }`}>
           
-          {/* Left: Official Kommon Studio Logo Image Signature */}
+          {/* Left: Official Kommon Studio Logo Image (Increased Brand Size) */}
           <button
             type="button"
             onClick={() => handleNavClick('home')}
@@ -66,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             <img
               src="/kommon-logo.png"
               alt="Kommon Studio"
-              className="h-8 sm:h-9 lg:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+              className="w-[105px] sm:w-[120px] lg:w-[135px] h-auto object-contain transition-all duration-300 group-hover:scale-105"
             />
           </button>
 
@@ -103,14 +103,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             </button>
           </div>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Hamburger Button - Refined with Orange Accent */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl text-white border border-white/15 hover:bg-white/10 transition-all"
+            className="lg:hidden p-2 sm:p-2.5 rounded-xl text-white border border-brand-orange/40 bg-white/5 hover:bg-brand-orange/20 transition-all flex items-center justify-center shrink-0 shadow-sm"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-brand-orange" /> : <Menu className="w-5 h-5 text-white" />}
           </button>
         </div>
       </div>

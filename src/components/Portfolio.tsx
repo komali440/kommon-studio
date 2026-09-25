@@ -24,7 +24,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
       {/* Background Flowing Orange Line Accent */}
       <FlowingOrangeLines variant="work" className="-top-10 left-0 w-full h-full pointer-events-none opacity-40" />
 
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-10 lg:px-12 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 relative z-10">
         
         {/* Main Section Heading - Global Typography System */}
         <motion.div 
@@ -44,8 +44,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
           </p>
         </motion.div>
 
-        {/* 3 Video Cards Layout - Clean 3-Column Responsive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+        {/* 3 Prominent Landscape Portfolio Video Cards - Premium Agency Gallery Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7 items-stretch w-full mx-auto">
           {videoWorkItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -54,67 +54,70 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onSelectProject }) => {
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: index * 0.1 }}
               onClick={() => onSelectProject(item)}
-              className="group relative rounded-3xl overflow-hidden cursor-pointer border border-white/10 bg-brand-darknavy shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between"
+              className="group relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border border-white/10 bg-brand-darknavy shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col justify-end"
             >
-              {/* Top Media Thumbnail Canvas (Consistent 16:9 Aspect Ratio) */}
-              <div className="relative overflow-hidden w-full aspect-[16/9] bg-brand-darknavy">
+              {/* Background Video / Image Element - Filling 100% width and height with object-fit cover */}
+              {item.videoUrl ? (
+                <video
+                  src={item.videoUrl}
+                  poster={item.thumbnail}
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                  className="w-full h-full object-cover block group-hover:scale-105 transition-transform duration-700 ease-out opacity-85 group-hover:opacity-95"
+                />
+              ) : (
                 <img
                   src={item.thumbnail}
                   alt={item.title}
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90"
+                  className="w-full h-full object-cover object-center block group-hover:scale-105 transition-transform duration-700 ease-out opacity-85 group-hover:opacity-95"
                 />
+              )}
 
-                {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-darknavy via-brand-navy/20 to-transparent" />
-                
-                {/* Hover Border Accent */}
-                <div className="absolute inset-0 border-2 border-brand-orange/0 group-hover:border-brand-orange/50 rounded-3xl transition-all duration-300 pointer-events-none z-20" />
+              {/* Dark Gradient Overlay for legibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-darknavy via-brand-darknavy/40 to-black/30 pointer-events-none" />
 
-                {/* Top Badges */}
-                <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
-                  <span className="px-3 py-1 rounded-full bg-brand-orange text-white text-[10px] font-mono font-black uppercase tracking-widest shadow-md">
-                    {item.projectNumber}
+              {/* Hover Border Accent */}
+              <div className="absolute inset-0 border-2 border-brand-orange/0 group-hover:border-brand-orange/60 rounded-2xl sm:rounded-3xl transition-all duration-300 pointer-events-none z-20" />
+
+              {/* Top Badges */}
+              <div className="absolute top-3.5 left-3.5 right-3.5 sm:top-4 sm:left-4 sm:right-4 flex items-center justify-between z-20 pointer-events-none">
+                <span className="px-3 py-1 rounded-full bg-brand-orange text-white text-[10px] sm:text-xs font-mono font-black uppercase tracking-widest shadow-md">
+                  {item.projectNumber}
+                </span>
+
+                {item.duration && (
+                  <span className="px-3 py-1 rounded-full bg-black/70 text-brand-cream text-[10px] sm:text-xs font-mono font-bold border border-white/15 backdrop-blur-md">
+                    {item.duration}
                   </span>
-
-                  {item.duration && (
-                    <span className="px-3 py-1 rounded-full bg-black/70 text-brand-cream text-[10px] font-mono font-bold border border-white/15 backdrop-blur-md">
-                      {item.duration}
-                    </span>
-                  )}
-                </div>
-
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 m-auto w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-orange text-white flex items-center justify-center shadow-orange-glow group-hover:scale-110 transition-transform duration-300 z-20">
-                  <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-white translate-x-0.5" />
-                </div>
+                )}
               </div>
 
-              {/* Bottom Card Content */}
-              <div className="p-6 text-white flex flex-col justify-between flex-grow">
-                <div>
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono font-bold text-brand-orange uppercase tracking-widest mb-2">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>{item.category}</span>
-                  </div>
+              {/* Center Play Button Overlay */}
+              <div className="absolute inset-0 m-auto w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-orange text-white flex items-center justify-center shadow-orange-glow group-hover:scale-110 transition-transform duration-300 z-20 pointer-events-none">
+                <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-white translate-x-0.5" />
+              </div>
 
-                  <h3 className="font-display heading-card text-white group-hover:text-brand-orange transition-colors uppercase tracking-tight mb-2.5">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-brand-cream/80 font-sans font-normal leading-relaxed mb-4 line-clamp-3">
-                    {item.description}
-                  </p>
+              {/* Bottom Overlay Card Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 z-20 flex flex-col justify-end text-white pointer-events-none">
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold text-brand-orange uppercase tracking-widest mb-1">
+                  <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <span>{item.category}</span>
                 </div>
 
-                {/* Footer Action */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between mt-auto">
-                  <span className="text-[11px] font-mono text-brand-cream/60">
+                <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight text-white group-hover:text-brand-orange transition-colors mb-1 truncate">
+                  {item.title}
+                </h3>
+
+                <div className="pt-2.5 sm:pt-3 border-t border-white/15 flex items-center justify-between mt-1.5 text-xs font-mono">
+                  <span className="text-brand-cream/75 font-medium truncate max-w-[65%]">
                     {item.deliverable}
                   </span>
 
-                  <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-brand-orange uppercase tracking-wider group-hover:translate-x-1 transition-transform">
-                    <span>WATCH</span>
+                  <span className="inline-flex items-center gap-1 text-brand-orange font-bold uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+                    <span>VIEW WORK</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Eye, PauseCircle, Heart, Compass, MailCheck, UserCheck } from 'lucide-react';
+import { ArrowDown, ArrowRight, Eye, PauseCircle, Heart, Compass, MailCheck, UserCheck } from 'lucide-react';
 import { companyData } from '../data/companyData';
 import { scrollToSection } from '../utils/scrollUtils';
 
@@ -30,7 +30,7 @@ export const CustomerJourney: React.FC = () => {
         </div>
 
         {/* Journey Flow Pipeline */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-6 relative items-center">
           {steps.map((step, index) => {
             const IconComponent = step.icon;
             const isLast = index === steps.length - 1;
@@ -42,9 +42,9 @@ export const CustomerJourney: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="flex flex-col items-center text-center group"
+                className="flex flex-col items-center text-center group relative w-full"
               >
-                <div className="relative mb-4">
+                <div className="relative mb-4 flex items-center justify-center">
                   <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
                     isLast
                       ? 'bg-brand-orange text-white shadow-orange-glow scale-105'
@@ -52,19 +52,27 @@ export const CustomerJourney: React.FC = () => {
                   }`}>
                     <IconComponent className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
+
+                  {/* Desktop Horizontal Connecting Arrow → */}
+                  {!isLast && (
+                    <div className="hidden lg:flex absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 text-brand-orange z-10 items-center justify-center">
+                      <ArrowRight className="w-5 h-5 text-brand-orange stroke-[2.5]" />
+                    </div>
+                  )}
                 </div>
 
                 <h3 className="font-display font-black text-base sm:text-lg uppercase tracking-tight text-white mb-1.5 leading-none">
                   {step.title}
                 </h3>
 
-                <p className="text-[11px] text-brand-cream/60 leading-tight max-w-[150px]">
+                <p className="text-[11px] text-brand-cream/60 leading-tight max-w-[150px] font-sans">
                   {step.desc}
                 </p>
 
+                {/* Mobile / Tablet Vertical Connecting Arrow ↓ */}
                 {!isLast && (
-                  <div className="mt-4 text-brand-orange/60 font-black text-lg">
-                    ↓
+                  <div className="lg:hidden flex items-center justify-center my-3 text-brand-orange">
+                    <ArrowDown className="w-5 h-5 text-brand-orange stroke-[2.5]" />
                   </div>
                 )}
               </motion.div>

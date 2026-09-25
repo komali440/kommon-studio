@@ -34,8 +34,8 @@ export const CTA: React.FC<CTAProps> = ({ onOpenContact }) => {
             </span>
           </h2>
 
-          {/* Supporting Text — High Contrast Bright White */}
-          <p className="text-base sm:text-xl text-white font-medium leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12 drop-shadow-sm">
+          {/* Supporting Text — Unified Global Typography System */}
+          <p className="text-lg sm:text-xl lg:text-2xl text-white font-sans font-normal leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-12 drop-shadow-sm">
             {companyData.finalCtaSub}
           </p>
 

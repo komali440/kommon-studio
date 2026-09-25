@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
               <img
                 src="/kommon-logo.png"
                 alt="Kommon Studio"
-                className="h-10 sm:h-12 w-auto object-contain"
+                className="w-[115px] sm:w-[135px] h-auto object-contain"
               />
             </div>
 

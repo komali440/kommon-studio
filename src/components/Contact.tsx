@@ -65,34 +65,34 @@ export const Contact: React.FC<ContactProps> = ({ preselectedService }) => {
               LET'S START A PROJECT <span className="text-brand-orange">TOGETHER.</span>
             </h2>
 
-            <p className="text-lg sm:text-xl text-brand-navy/80 font-sans font-normal leading-relaxed mb-6 max-w-[500px]">
+            <p className="text-lg sm:text-xl lg:text-2xl text-brand-navy/80 font-sans font-normal leading-relaxed mb-6 sm:mb-8 max-w-[500px]">
               Tell us what business problem you are trying to solve — visibility, content, promotion or reaching customers. Let's find a creative way forward.
             </p>
 
-            {/* Direct Connect Cards */}
-            <div className="space-y-3 mb-6 sm:mb-8 max-w-[500px]">
+            {/* Direct Connect Cards - Standardized Typography & Equal Heights */}
+            <div className="space-y-3.5 mb-6 sm:mb-8 max-w-[500px]">
               
               {/* WhatsApp */}
               <a
                 href={companyData.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3.5 sm:p-4 rounded-xl bg-white border border-brand-navy/10 flex items-center justify-between group hover:border-green-600 hover:shadow-card-subtle transition-all"
+                className="p-4 rounded-2xl bg-white border border-brand-navy/10 flex items-center justify-between group hover:border-green-600 hover:shadow-card-subtle transition-all h-[76px]"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-green-600 text-white flex items-center justify-center shadow-sm shrink-0">
-                    <MessageSquare className="w-4 h-4" />
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-green-600 text-white flex items-center justify-center shadow-sm shrink-0">
+                    <MessageSquare className="w-5 h-5" />
                   </div>
-                  <div>
-                    <span className="text-[10px] font-mono font-extrabold text-green-600 uppercase tracking-wider block">
+                  <div className="flex flex-col justify-center">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold text-green-600 uppercase tracking-wider block">
                       WHATSAPP DIRECT
                     </span>
-                    <span className="font-display font-black text-lg sm:text-xl text-brand-navy leading-none">
+                    <span className="font-sans font-bold text-sm sm:text-base text-brand-navy leading-snug">
                       CHAT WITH STUDIO TEAM
                     </span>
                   </div>
                 </div>
-                <Sparkles className="w-4 h-4 text-green-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                <Sparkles className="w-4.5 h-4.5 text-green-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
               </a>
 
               {/* Instagram */}
@@ -100,42 +100,43 @@ export const Contact: React.FC<ContactProps> = ({ preselectedService }) => {
                 href={companyData.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3.5 sm:p-4 rounded-xl bg-white border border-brand-navy/10 flex items-center justify-between group hover:border-brand-orange hover:shadow-card-subtle transition-all"
+                className="p-4 rounded-2xl bg-white border border-brand-navy/10 flex items-center justify-between group hover:border-brand-orange hover:shadow-card-subtle transition-all h-[76px]"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-brand-navy text-brand-orange flex items-center justify-center shadow-sm shrink-0">
-                    <InstagramIcon className="w-4 h-4" />
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-brand-navy text-brand-orange flex items-center justify-center shadow-sm shrink-0">
+                    <InstagramIcon className="w-5 h-5" />
                   </div>
-                  <div>
-                    <span className="text-[10px] font-mono font-extrabold text-brand-orange uppercase tracking-wider block">
+                  <div className="flex flex-col justify-center">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold text-brand-orange uppercase tracking-wider block">
                       INSTAGRAM
                     </span>
-                    <span className="font-mono font-medium text-xs sm:text-sm text-brand-navy group-hover:text-brand-orange transition-colors leading-none lowercase">
+                    <span className="font-sans font-bold text-sm sm:text-base text-brand-navy group-hover:text-brand-orange transition-colors leading-snug lowercase">
                       {companyData.instagramHandle}
                     </span>
                   </div>
                 </div>
-                <Sparkles className="w-4 h-4 text-brand-orange opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                <Sparkles className="w-4.5 h-4.5 text-brand-orange opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
               </a>
 
               {/* Email */}
               <a
                 href={`mailto:${companyData.email}`}
-                className="p-3.5 sm:p-4 rounded-xl bg-white border border-brand-navy/10 flex items-center justify-between group hover:border-brand-navy hover:shadow-card-subtle transition-all"
+                className="p-4 rounded-2xl bg-white border border-brand-navy/10 flex items-center justify-between group hover:border-brand-navy hover:shadow-card-subtle transition-all h-[76px]"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-brand-navy text-white flex items-center justify-center shadow-sm shrink-0">
-                    <Mail className="w-4 h-4 text-brand-orange" />
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-brand-navy text-white flex items-center justify-center shadow-sm shrink-0">
+                    <Mail className="w-5 h-5 text-brand-orange" />
                   </div>
-                  <div>
-                    <span className="text-[10px] font-mono font-extrabold text-brand-navy/60 uppercase tracking-wider block">
+                  <div className="flex flex-col justify-center">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold text-brand-navy/60 uppercase tracking-wider block">
                       EMAIL INQUIRY
                     </span>
-                    <span className="font-display font-black text-base sm:text-lg text-brand-navy leading-none">
+                    <span className="font-sans font-bold text-sm sm:text-base text-brand-navy leading-snug">
                       {companyData.email}
                     </span>
                   </div>
                 </div>
+                <Sparkles className="w-4.5 h-4.5 text-brand-navy opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
               </a>
 
             </div>
